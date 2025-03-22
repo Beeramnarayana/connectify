@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
     "start": "node BackEnd/Index.js",
     "dev": "nodemon BackEnd/Index.js"
   },
