@@ -3,25 +3,25 @@
   "name": "social-media",
   "builds": [
     {
-      "src": "backend/index.js",
+      "src": "BackEnd/Index.js",
       "use": "@vercel/node"
     },
     {
-      "src": "frontend/package.json",
+      "src": "Frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "frontend/dist"
+        "distDir": "Frontend/dist"
       }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/backend/index.js"
+      "dest": "/BackEnd/Index.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/frontend/dist/$1"
+      "dest": "/Frontend/dist/$1"
     }
   ]
 }
