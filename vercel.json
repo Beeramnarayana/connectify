@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "Frontend/vite.config.js",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "Frontend/dist"
+      }
+    },
+    {
+      "src": "BackEnd/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "BackEnd/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "Frontend/dist/$1"
+    }
+  ]
+}
