@@ -61,10 +61,10 @@ app.use("/api/post", postRoutes);
 
 const __dirname = path.resolve();
 
-app.use(express.static(path.join(__dirname, "/Frontend/dist")));
+app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, '../Frontend/dist', "index.html"));
 });
 
 app.listen(port, () => {
