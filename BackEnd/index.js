@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import { connectDb } from "./database/db.js";
+import { connectDb } from "./Database/db.js";
 import cloudinary from "cloudinary";
 import cookieParser from "cookie-parser";
 import { isAuth } from "./middlewares/isAuth.js";
