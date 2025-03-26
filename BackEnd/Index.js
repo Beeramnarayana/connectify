@@ -5,8 +5,14 @@ import cloudinary from "cloudinary";
 import cookieParser from "cookie-parser";
 import { isAuth } from "./middlewares/isAuth.js";
 import { User } from "./models/userModel.js";
+import path from "path";
+import axios from 'axios';
 
-const app = express();
+
+const app=express()
+const interval = 30000;
+
+
 dotenv.config();
 
 cloudinary.v2.config({
@@ -20,8 +26,6 @@ app.use(express.json());
 app.use(cookieParser());
 
 const port = process.env.PORT;
-
-
 
 // to get all users
 app.get("/api/user/all", isAuth, async (req, res) => {
@@ -48,11 +52,20 @@ import userRoutes from "./routes/userRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
 
+
 //using routes
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
 
+
+const __dirname = path.resolve();
+
+app.use(express.static(path.join(__dirname, "/Frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"));
+});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
