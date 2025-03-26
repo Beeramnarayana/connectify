@@ -8,7 +8,7 @@ export default defineConfig({
     server: {
       proxy: {
         '/api': {
-          target: 'https://social-media-backend-web.vercel.app',
+          target: 'https://social-media-5-ibt7.onrender.com',
         }
       }
     }
