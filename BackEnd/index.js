@@ -48,9 +48,9 @@ app.get("/api/user/all", isAuth, async (req, res) => {
 });
 
 // importing routes
-import userRoutes from "./routes/userRoutes.js";
-import authRoutes from "./routes/authRoutes.js";
-import postRoutes from "./routes/postRoutes.js";
+import userRoutes from "./Routes/userRoutes.js";
+import authRoutes from "./Routes/authRoutes.js";
+import postRoutes from "./Routes/PostRoutes.js";
 
 
 //using routes

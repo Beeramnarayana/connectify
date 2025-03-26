@@ -7,7 +7,7 @@ import {
   updateProfile,
   userFollowerandFollowingData,
   userProfile,
-} from "../Controllers/UserController.js";
+} from "../controllers/UserController.js";
 import uploadFile from "../middlewares/multer.js";
 
 const router = express.Router();
