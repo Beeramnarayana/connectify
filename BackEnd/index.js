@@ -25,8 +25,8 @@ cloudinary.v2.config({
 app.use(express.json());
 app.use(cookieParser());
 
-const port = process.env.PORT;
-
+const port = process.env.PORT || 3000;
+// console.log(import.meta.env.MONGODB_URL);
 // to get all users
 app.get("/api/user/all", isAuth, async (req, res) => {
   try {
@@ -59,13 +59,6 @@ app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
 
 
-const __dirname = path.resolve();
-
-app.use(express.static(path.join(__dirname, "../Frontend/dist")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, '../Frontend/dist', "index.html"));
-});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

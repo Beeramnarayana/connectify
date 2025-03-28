@@ -8,8 +8,11 @@ export default defineConfig({
     server: {
       proxy: {
         '/api': {
-          target: 'https://social-media-5-ibt7.onrender.com',
+          target: 'http://localhost:5000',
         }
       }
-    }
+    },
+    esbuild: {
+      jsxInject: `import React from 'react'`,
+   },
 })
