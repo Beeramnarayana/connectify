@@ -10,7 +10,8 @@ export default defineConfig({
         '/api': {
           target: 'https://social-media-3-oj14.onrender.com',
         }
-      }
+      },
+      host: '0.0.0.0',
     },
     esbuild: {
       jsxInject: `import React from 'react'`,
