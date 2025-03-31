@@ -7,12 +7,12 @@ import App from './App'
 import { UserContextProvider } from './context/UserContext.jsx'
 import { PostContextProvider } from './context/PostContext.jsx'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+ReactDom.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
     <UserContextProvider>
     <PostContextProvider>
           <App />
     </PostContextProvider>
     </UserContextProvider>
-  </StrictMode>,
+  </React.StrictMode>,
 )
