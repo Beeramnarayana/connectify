@@ -12,7 +12,7 @@ export const UserContextProvider = ({ children }) => {
   async function registerUser(formdata, navigate, fetchPosts) {
     setLoading(true);
     try {
-      const { data } = await axios.post("/api/auth/register", formdata);
+      const { data } = await axios.post("https://social-media-3-oj14.onrender.com/api/auth/register", formdata);
 
       toast.success(data.message);
       setIsAuth(true);
@@ -29,7 +29,7 @@ export const UserContextProvider = ({ children }) => {
   async function loginUser(email, password, navigate, fetchPosts) {
     setLoading(true);
     try {
-      const { data } = await axios.post("/api/auth/login", {
+      const { data } = await axios.post("https://social-media-3-oj14.onrender.com/api/auth/login", {
         email,
         password,
         navigate,
