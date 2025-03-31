@@ -8,7 +8,7 @@ export default defineConfig({
     server: {
       proxy: {
         '/api': {
-          target: 'http://localhost:5000',
+          target: 'https://social-media-3-oj14.onrender.com',
         }
       }
     },
