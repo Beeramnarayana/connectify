@@ -8,7 +8,7 @@ import uploadFile from "../middlewares/multer.js";
 
 const router = express.Router();
 
-router.post("/register", uploadFile, registerUser);
+router.post("/register",uploadFile, registerUser);
 router.post("/login", loginUser);
 router.get("/logout", logoutUser);
 

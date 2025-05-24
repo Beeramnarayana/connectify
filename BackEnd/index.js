@@ -10,7 +10,7 @@ import axios from 'axios';
 
 
 const app=express()
-const interval = 30000;
+const interval = 3000;
 
 
 dotenv.config();
