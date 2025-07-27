@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node BackEnd/index.js",
+    "dev": "nodemon BackEnd/index.js",
     "build": "npm run dev"
   },
   "keywords": [],
@@ -25,7 +25,6 @@
     "mongoose": "^8.9.5",
     "multer": "^1.4.5-lts.1",
     "socket.io": "^4.8.1",
-    "vercel": "^41.4.1",
     "winston": "^3.17.0",
     "winston-daily-rotate-file": "^5.0.0",
     "xhr2": "^0.2.1"
