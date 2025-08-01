@@ -29,7 +29,7 @@ app.use(cookieParser());
 // CORS configuration for production
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-app.vercel.app', 'https://your-custom-domain.com'] // Replace with your actual domains
+    ? ['https://connectify-vercel.vercel.app', 'https://connectify.vercel.app', 'https://connectify-git-main-beeramnarayana.vercel.app'] // Will be updated after deployment
     : ['http://localhost:5173', 'http://localhost:3000'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],

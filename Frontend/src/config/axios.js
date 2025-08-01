@@ -3,7 +3,7 @@ import axios from 'axios';
 // Create axios instance with base configuration
 const api = axios.create({
   baseURL: process.env.NODE_ENV === 'production' 
-    ? 'https://your-app.vercel.app' // Replace with your actual Vercel domain
+    ? window.location.origin // Automatically uses the current domain
     : 'http://localhost:3000',
   withCredentials: true,
   headers: {

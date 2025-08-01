@@ -1,0 +1,37 @@
+# Copy these environment variables to your Vercel project settings
+
+# JWT Secret (Generated for you)
+JWT_SEC=443b3207f0519267aa0694a28395aaa74b3539008f4397778d467dfe039f3e91
+
+# MongoDB Atlas Connection String
+# Replace with your actual MongoDB connection string
+MONGODB_URL=mongodb+srv://your_username:your_password@your_cluster.mongodb.net/your_database_name
+
+# Cloudinary Configuration
+# Replace with your actual Cloudinary credentials
+Cloudinary_Cloud_Name=your_cloudinary_cloud_name
+Cloudinary_Api=your_cloudinary_api_key
+Cloudinary_Secret=your_cloudinary_api_secret
+
+# Environment
+NODE_ENV=production
+
+# Instructions:
+# 1. Go to https://vercel.com
+# 2. Create a new project and import your GitHub repository
+# 3. Go to Project Settings > Environment Variables
+# 4. Add each variable above with its corresponding value
+# 5. Make sure to replace the placeholder values with your actual credentials
+
+# MongoDB Atlas Setup:
+# 1. Go to https://mongodb.com
+# 2. Create a free cluster
+# 3. Click "Connect" > "Connect your application"
+# 4. Copy the connection string and replace <password> with your database password
+# 5. Make sure to allow connections from anywhere (0.0.0.0/0) for Vercel
+
+# Cloudinary Setup:
+# 1. Go to https://cloudinary.com
+# 2. Create a free account
+# 3. Go to Dashboard
+# 4. Copy your Cloud Name, API Key, and API Secret 
