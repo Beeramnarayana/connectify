@@ -13,6 +13,12 @@ import uploadFile from "../middlewares/multer.js";
 
 const router = express.Router();
 
+// Add debugging middleware
+router.use((req, res, next) => {
+  console.log(`Post Route: ${req.method} ${req.originalUrl}`);
+  next();
+});
+
 router.post("/new", isAuth, uploadFile, newPost);
 
 router.put("/:id", isAuth, editCaption);

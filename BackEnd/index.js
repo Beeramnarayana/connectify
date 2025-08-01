@@ -29,7 +29,7 @@ app.use(cookieParser());
 // CORS configuration for production
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://connectify-vercel.vercel.app', 'https://connectify.vercel.app', 'https://connectify-git-main-beeramnarayana.vercel.app'] // Will be updated after deployment
+    ? ['https://connectify-mu-eight.vercel.app', 'https://connectify-vercel.vercel.app', 'https://connectify.vercel.app', 'https://connectify-git-main-beeramnarayana.vercel.app'] // Updated with actual domain
     : ['http://localhost:5173', 'http://localhost:3000'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
@@ -68,6 +68,23 @@ import postRoutes from "./Routes/PostRoutes.js";
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
+
+// Add a catch-all route for API debugging
+app.use("/api/*", (req, res) => {
+  res.status(404).json({
+    message: `Route not found: ${req.method} ${req.originalUrl}`,
+    availableRoutes: [
+      "GET /api/user/all",
+      "POST /api/auth/register",
+      "POST /api/auth/login",
+      "GET /api/auth/logout",
+      "POST /api/post/new",
+      "GET /api/post/all",
+      "POST /api/post/like/:id",
+      "POST /api/post/comment/:id"
+    ]
+  });
+});
 
 
 
