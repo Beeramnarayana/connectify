@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../config/axios.js";
 import React, { useEffect, useState } from "react";
 import { LoadingAnimation } from "./Loading";
 
@@ -10,7 +10,7 @@ const LikeModal = ({ isOpen, onClose, id }) => {
 
   async function fetchLikes() {
     try {
-      const { data } = await axios.get("/api/post/" + id);
+      const { data } = await api.get("/api/post/" + id);
 
       setValue(data);
       setLoading(false);

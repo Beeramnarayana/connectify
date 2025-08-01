@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../config/axios.js";
 import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -11,7 +11,7 @@ export const PostContextProvider = ({ children }) => {
 
   async function fetchPosts() {
     try {
-      const { data } = await axios.get("/api/post/all");
+      const { data } = await api.get("/api/post/all");
 
       setPosts(data.posts);
       setReels(data.reels);
@@ -27,7 +27,7 @@ export const PostContextProvider = ({ children }) => {
   async function addPost(formdata, setFile, setFilePrev, setCaption, type) {
     setAddLoading(true);
     try {
-      const { data } = await axios.post("/api/post/new?type=" + type, formdata);
+      const { data } = await api.post("/api/post/new?type=" + type, formdata);
 
       toast.success(data.message);
       fetchPosts();
@@ -43,7 +43,7 @@ export const PostContextProvider = ({ children }) => {
 
   async function likePost(id) {
     try {
-      const { data } = await axios.post("/api/post/like/" + id);
+      const { data } = await api.post("/api/post/like/" + id);
 
       toast.success(data.message);
       fetchPosts();
@@ -54,7 +54,7 @@ export const PostContextProvider = ({ children }) => {
 
   async function addComment(id, comment, setComment, setShow) {
     try {
-      const { data } = await axios.post("/api/post/comment/" + id, {
+      const { data } = await api.post("/api/post/comment/" + id, {
         comment,
       });
       toast.success(data.message);
@@ -69,7 +69,7 @@ export const PostContextProvider = ({ children }) => {
   async function deletePost(id) {
     setLoading(true);
     try {
-      const { data } = await axios.delete("/api/post/" + id);
+      const { data } = await api.delete("/api/post/" + id);
 
       toast.success(data.message);
       fetchPosts();
@@ -82,7 +82,7 @@ export const PostContextProvider = ({ children }) => {
 
   async function deleteComment(id, commentId) {
     try {
-      const { data } = await axios.delete(
+      const { data } = await api.delete(
         `/api/post/comment/${id}?commentId=${commentId}`
       );
 

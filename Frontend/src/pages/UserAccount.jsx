@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { PostData } from "../context/PostContext";
 import PostCard from "../components/PostCard";
 import { FaArrowDownLong, FaArrowUp } from "react-icons/fa6";
-import axios from "axios";
+import api from "../config/axios.js";
 import { Loading } from "../components/Loading";
 import { UserData } from "../context/UserContext";
 import Modal from "../components/Modal";
@@ -21,7 +21,7 @@ const UserAccount = ({ user: loggedInUser }) => {
 
   async function fetchUser() {
     try {
-      const { data } = await axios.get("/api/user/" + params.id);
+      const { data } = await api.get("/api/user/" + params.id);
 
       setUser(data);
       setLoading(false);
@@ -90,7 +90,7 @@ const UserAccount = ({ user: loggedInUser }) => {
 
   async function followData() {
     try {
-      const { data } = await axios.get("/api/user/followdata/" + user._id);
+      const { data } = await api.get("/api/user/followdata/" + user._id);
 
       setFollowersData(data.followers);
       setFollowingsData(data.followings);

@@ -5,7 +5,7 @@ import { PostData } from "../context/PostContext";
 import PostCard from "../components/PostCard";
 import { FaArrowUp,FaArrowDown } from "react-icons/fa";
 import Modal from "../components/Modal";
-import axios from "axios";
+import api from "../config/axios.js";
 import { Loading } from "../components/Loading";
 import { CiEdit } from "react-icons/ci";
 import toast from "react-hot-toast";
@@ -59,7 +59,7 @@ const Account = ({ user }) => {
 
   async function followData() {
     try {
-      const { data } = await axios.get("/api/user/followdata/" + user._id);
+      const { data } = await api.get("/api/user/followdata/" + user._id);
 
       setFollowersData(data.followers);
       setFollowingsData(data.followings);
@@ -101,7 +101,7 @@ const Account = ({ user }) => {
   async function updatePassword(e) {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/api/user/" + user._id, {
+      const { data } = await api.post("/api/user/" + user._id, {
         oldPassword,
         newPassword,
       });

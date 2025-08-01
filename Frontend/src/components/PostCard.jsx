@@ -9,7 +9,7 @@ import { MdDelete } from "react-icons/md";
 import SimpleModal from "./SimpleModal";
 import { LoadingAnimation } from "./Loading";
 import toast from "react-hot-toast";
-import axios from "axios";
+import api from "../config/axios.js";
 import LikeModal from "./LikeModal";
 
 const PostCard = ({ type, value }) => {
@@ -61,7 +61,7 @@ const PostCard = ({ type, value }) => {
   async function updateCaption() {
     setCaptionLoading(true);
     try {
-      const { data } = await axios.put("/api/post/" + value._id, { caption });
+      const { data } = await api.put("/api/post/" + value._id, { caption });
 
       toast.success(data.message);
       fetchPosts();

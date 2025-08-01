@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../config/axios.js";
 import { createContext, useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -12,7 +12,7 @@ export const UserContextProvider = ({ children }) => {
   async function registerUser(formdata, navigate, fetchPosts) {
     setLoading(true);
     try {
-      const { data } = await axios.post("/api/auth/register", formdata);
+      const { data } = await api.post("/api/auth/register", formdata);
 
       toast.success(data.message);
       setIsAuth(true);
@@ -29,7 +29,7 @@ export const UserContextProvider = ({ children }) => {
   async function loginUser(email, password, navigate, fetchPosts) {
     setLoading(true);
     try {
-      const { data } = await axios.post("/api/auth/login", {
+      const { data } = await api.post("/api/auth/login", {
         email,
         password,
         navigate,
@@ -49,7 +49,7 @@ export const UserContextProvider = ({ children }) => {
 
   async function fetchUser() {
     try {
-      const { data } = await axios.get("/api/user/me");
+      const { data } = await api.get("/api/user/me");
 
       setUser(data);
       setIsAuth(true);
@@ -63,7 +63,7 @@ export const UserContextProvider = ({ children }) => {
 
   async function logoutUser(navigate) {
     try {
-      const { data } = await axios.get("/api/auth/logout");
+      const { data } = await api.get("/api/auth/logout");
 
       if (data.message) {
         toast.success(data.message);
@@ -78,7 +78,7 @@ export const UserContextProvider = ({ children }) => {
 
   async function followUser(id, fetchUser) {
     try {
-      const { data } = await axios.post("/api/user/follow/" + id);
+      const { data } = await api.post("/api/user/follow/" + id);
 
       toast.success(data.message);
       fetchUser();
@@ -89,7 +89,7 @@ export const UserContextProvider = ({ children }) => {
 
   async function updateProfilePic(id, formdata, setFile) {
     try {
-      const { data } = await axios.put("/api/user/" + id, formdata);
+      const { data } = await api.put("/api/user/" + id, formdata);
       toast.success(data.message);
       fetchUser();
       setFile(null);
@@ -99,7 +99,7 @@ export const UserContextProvider = ({ children }) => {
   }
   async function updateProfileName(id, name, setShowInput) {
     try {
-      const { data } = await axios.put("/api/user/" + id, { name });
+      const { data } = await api.put("/api/user/" + id, { name });
       toast.success(data.message);
       fetchUser();
       setShowInput(false);

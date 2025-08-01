@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../config/axios.js";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { LoadingAnimation } from "../components/Loading";
@@ -10,7 +10,7 @@ const Search = () => {
   async function fetchUsers() {
     setLoading(true);
     try {
-      const { data } = await axios.get("/api/user/all?search=" + search);
+      const { data } = await api.get("/api/user/all?search=" + search);
 
       setUsers(data);
       setLoading(false);
