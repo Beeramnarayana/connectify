@@ -11,10 +11,10 @@ export default defineConfig({
           target: 'http://localhost:5000',
         }
       },
-      host: '0.0.0.0',
-      allowedHosts: ['social-media-7-t580.onrender.com','https://social-media-3-oj14.onrender.com'],
+      // host: '0.0.0.0',
+      // allowedHosts: ['social-media-7-t580.onrender.com','https://social-media-3-oj14.onrender.com'],
     },
-    esbuild: {
-      jsxInject: `import React from 'react'`,
-   },
+  //   esbuild: {
+  //     jsxInject: `import React from 'react'`,
+  //  },
 })

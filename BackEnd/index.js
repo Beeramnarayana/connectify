@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { connectDb } from "./Database/db.js";
 import cloudinary from "cloudinary";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import { isAuth } from "./middlewares/isAuth.js";
 import { User } from "./models/userModel.js";
 import path from "path";
@@ -24,6 +25,16 @@ cloudinary.v2.config({
 //using middlewares
 app.use(express.json());
 app.use(cookieParser());
+
+// CORS configuration for production
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://your-app.vercel.app', 'https://your-custom-domain.com'] // Replace with your actual domains
+    : ['http://localhost:5173', 'http://localhost:3000'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
+}));
 
 const port = process.env.PORT || 3000;
 // console.log(import.meta.env.MONGODB_URL);
