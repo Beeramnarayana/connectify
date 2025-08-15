@@ -9,7 +9,7 @@ export default defineConfig({
     cors: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'https://connectify-8.onrender.com',
         changeOrigin: true,
         secure: false,
       }
