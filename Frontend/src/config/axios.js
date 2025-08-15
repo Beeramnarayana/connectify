@@ -1,14 +1,13 @@
 import axios from 'axios';
 
 // Create axios instance with base configuration
+// In development, use Vite's proxy by keeping baseURL relative
 const api = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' 
-    ? window.location.origin // Automatically uses the current domain
-    : 'http://localhost:3000',
+  baseURL: process.env.NODE_ENV === 'production'
+    ? window.location.origin // Use current domain in production
+    : '', // Use Vite dev proxy for /api in development
   withCredentials: true,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  // Do not set Content-Type globally; let axios infer per request (JSON vs FormData)
 });
 
 // Request interceptor

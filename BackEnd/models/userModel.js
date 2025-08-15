@@ -17,8 +17,8 @@ const userModel=new mongoose.Schema({
     },
     gender:{
         type:String,
-        required:true,
         enum:["male","female"],
+        required:true,
     },
     followers:[{
         type:mongoose.Schema.Types.ObjectId,
@@ -31,7 +31,7 @@ const userModel=new mongoose.Schema({
     profilePic:{
         id:String,
         url:String,
-    }    
+    }  
 },
     {
         timestamps:true

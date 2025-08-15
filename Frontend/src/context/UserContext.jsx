@@ -8,6 +8,7 @@ export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [fetchPostsFunction, setFetchPostsFunction] = useState(null);
 
   async function registerUser(formdata, navigate, fetchPosts) {
     setLoading(true);
@@ -19,9 +20,13 @@ export const UserContextProvider = ({ children }) => {
       setUser(data.user);
       navigate("/");
       setLoading(false);
-      fetchPosts();
+      // Call fetchPosts after successful registration
+      if (fetchPosts) {
+        fetchPosts();
+      }
     } catch (error) {
-      toast.error(error.response.data.message);
+      const message = error?.response?.data?.message || error?.message || 'Registration failed';
+      toast.error(message);
       setLoading(false);
     }
   }
@@ -40,9 +45,13 @@ export const UserContextProvider = ({ children }) => {
       setUser(data.user);
       navigate("/");
       setLoading(false);
-      fetchPosts();
+      // Call fetchPosts after successful login
+      if (fetchPosts) {
+        fetchPosts();
+      }
     } catch (error) {
-      toast.error(error.response.data.message);
+      const message = error?.response?.data?.message || error?.message || 'Login failed';
+      toast.error(message);
       setLoading(false);
     }
   }
@@ -54,6 +63,10 @@ export const UserContextProvider = ({ children }) => {
       setUser(data);
       setIsAuth(true);
       setLoading(false);
+      // If we have a fetchPosts function, call it after successful authentication
+      if (fetchPostsFunction) {
+        fetchPostsFunction();
+      }
     } catch (error) {
       console.log(error);
       setIsAuth(false);
@@ -72,7 +85,8 @@ export const UserContextProvider = ({ children }) => {
         navigate("/login");
       }
     } catch (error) {
-      toast.error(error.response.data.message);
+      const message = error?.response?.data?.message || error?.message || 'Logout failed';
+      toast.error(message);
     }
   }
 
@@ -83,7 +97,8 @@ export const UserContextProvider = ({ children }) => {
       toast.success(data.message);
       fetchUser();
     } catch (error) {
-      toast.error(error.response.data.message);
+      const message = error?.response?.data?.message || error?.message || 'Follow failed';
+      toast.error(message);
     }
   }
 
@@ -94,7 +109,8 @@ export const UserContextProvider = ({ children }) => {
       fetchUser();
       setFile(null);
     } catch (error) {
-      toast.error(error.response.data.message);
+      const message = error?.response?.data?.message || error?.message || 'Update failed';
+      toast.error(message);
     }
   }
   async function updateProfileName(id, name, setShowInput) {
@@ -104,13 +120,14 @@ export const UserContextProvider = ({ children }) => {
       fetchUser();
       setShowInput(false);
     } catch (error) {
-      toast.error(error.response.data.message);
+      const message = error?.response?.data?.message || error?.message || 'Update failed';
+      toast.error(message);
     }
   }
 
   useEffect(() => {
     fetchUser();
-  }, []);
+  }, [fetchPostsFunction]);
   return (
     <UserContext.Provider
       value={{
@@ -125,6 +142,7 @@ export const UserContextProvider = ({ children }) => {
         followUser,
         updateProfilePic,
         updateProfileName,
+        setFetchPostsFunction,
       }}
     >
       {children}

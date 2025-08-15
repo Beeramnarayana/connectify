@@ -1,6 +1,7 @@
 import api from "../config/axios.js";
 import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { UserData } from "./UserContext.jsx";
 
 const PostContext = createContext();
 
@@ -8,6 +9,7 @@ export const PostContextProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [reels, setReels] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { setFetchPostsFunction } = UserData();
 
   async function fetchPosts() {
     try {
@@ -36,7 +38,8 @@ export const PostContextProvider = ({ children }) => {
       setCaption("");
       setAddLoading(false);
     } catch (error) {
-      toast.error(error.response.data.message);
+      const message = error?.response?.data?.message || error?.message || 'Add post failed';
+      toast.error(message);
       setAddLoading(false);
     }
   }
@@ -48,7 +51,8 @@ export const PostContextProvider = ({ children }) => {
       toast.success(data.message);
       fetchPosts();
     } catch (error) {
-      toast.error(error.response.data.message);
+      const message = error?.response?.data?.message || error?.message || 'Like failed';
+      toast.error(message);
     }
   }
 
@@ -62,7 +66,8 @@ export const PostContextProvider = ({ children }) => {
       setComment("");
       setShow(false);
     } catch (error) {
-      toast.error(error.response.data.message);
+      const message = error?.response?.data?.message || error?.message || 'Comment failed';
+      toast.error(message);
     }
   }
 
@@ -75,7 +80,8 @@ export const PostContextProvider = ({ children }) => {
       fetchPosts();
       setLoading(false);
     } catch (error) {
-      toast.error(error.response.data.message);
+      const message = error?.response?.data?.message || error?.message || 'Delete failed';
+      toast.error(message);
       setLoading(false);
     }
   }
@@ -89,13 +95,15 @@ export const PostContextProvider = ({ children }) => {
       toast.success(data.message);
       fetchPosts();
     } catch (error) {
-      toast.error(error.response.data.message);
+      const message = error?.response?.data?.message || error?.message || 'Delete comment failed';
+      toast.error(message);
     }
   }
 
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    // Register the fetchPosts function with UserContext
+    setFetchPostsFunction(() => fetchPosts);
+  }, [setFetchPostsFunction]);
   return (
     <PostContext.Provider
       value={{

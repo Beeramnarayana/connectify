@@ -143,7 +143,7 @@ const Account = ({ user }) => {
                   <div className="bg-white flex justify-between gap-4 p-8 rounded-lg shadow-md max-w-md">
                     <div className="image flex flex-col justify-between mb-4 gap-4">
                       <img
-                        src={user.profilePic.url}
+                        src={user.profilePic.url!=undefined? user.profilePic.url : ""}
                         alt=""
                         className="w-[180px] h-[180px] rounded-full"
                       />

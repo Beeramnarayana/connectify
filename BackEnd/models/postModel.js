@@ -16,6 +16,7 @@ const postSchema = new mongoose.Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+    
   },
 
   createdAt: {
@@ -39,6 +40,12 @@ const postSchema = new mongoose.Schema({
       name: {
         type: String,
         required: true,
+      },
+      profilePic:{
+        url:String,
+        id:String,
+       // type:String,
+        //default:""
       },
       comment: {
         type: String,

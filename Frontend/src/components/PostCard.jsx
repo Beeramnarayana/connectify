@@ -249,11 +249,12 @@ export const Comment = ({ value, user, owner, id }) => {
   const deleteCommentHandler = () => {
     deleteComment(id, value._id);
   };
+
   return (
     <div className="flex items-center space-x-2 mt-2">
       <Link to={`/user/${value.user._id}`}>
         <img
-          src={value.user.profilePic.url}
+          src={value.user.profilePicture || ""}
           className="w-8 h-8 rounded-full"
           alt=""
         />
@@ -275,11 +276,6 @@ export const Comment = ({ value, user, owner, id }) => {
         </>
       )}
 
-      {owner === user._id && (
-        <button onClick={deleteCommentHandler} className="text-red-500">
-          <MdDelete />
-        </button>
-      )}
     </div>
   );
 };
