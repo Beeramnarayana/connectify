@@ -4,8 +4,8 @@ import axios from 'axios';
 // In development, use Vite's proxy by keeping baseURL relative
 const api = axios.create({
   baseURL: process.env.NODE_ENV === 'production'
-    ? window.location.origin // Use current domain in production
-    : '', // Use Vite dev proxy for /api in development
+    ? 'https://connectify-8.onrender.com'// Use current domain in production
+    : 'http://localhost:5173', // Use Vite dev proxy for /api in development
   withCredentials: true,
   // Do not set Content-Type globally; let axios infer per request (JSON vs FormData)
 });

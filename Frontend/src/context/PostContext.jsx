@@ -38,7 +38,7 @@ export const PostContextProvider = ({ children }) => {
       setCaption("");
       setAddLoading(false);
     } catch (error) {
-      const message = error?.response?.data?.message || error?.message || 'Add post failed';
+      const message = error.response.data.message || error?.message || 'Add post failed';
       toast.error(message);
       setAddLoading(false);
     }

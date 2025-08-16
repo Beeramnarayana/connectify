@@ -90,6 +90,7 @@ const UserAccount = ({ user: loggedInUser }) => {
 
   async function followData() {
     try {
+      if (!user._id) return;
       const { data } = await api.get("/api/user/followdata/" + user._id);
 
       setFollowersData(data.followers);

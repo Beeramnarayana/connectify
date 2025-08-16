@@ -254,7 +254,7 @@ export const Comment = ({ value, user, owner, id }) => {
     <div className="flex items-center space-x-2 mt-2">
       <Link to={`/user/${value.user._id}`}>
         <img
-          src={value.user.profilePicture || ""}
+          src={value.user.profilePicture}
           className="w-8 h-8 rounded-full"
           alt=""
         />
