@@ -15,7 +15,7 @@ const router = express.Router();
 
 // Add debugging middleware
 router.use((req, res, next) => {
-  console.log(`Post Route: ${req.method} ${req.originalUrl}`);
+  console.log(`Post Route: ${req.method} ${req.protocol}://${req.get('host')}${req.originalUrl}`);
   next();
 });
 

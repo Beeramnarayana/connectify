@@ -147,11 +147,11 @@ export const loginUser = TryCatch(async (req, res) => {
 
   const user = await User.findOne({ email });
 
-  if (!user)
+  if (!user){
     return res.status(400).json({
       message: " in Credentials",
     });
-
+  }
   const comparePassword = await bcrypt.compare(password, user.password);
 
   if (!comparePassword)

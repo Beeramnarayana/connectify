@@ -28,9 +28,10 @@ app.use(cookieParser());
 
 // CORS configuration for production
 app.use(cors({
+
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://connectify-mu-eight.vercel.app', 'https://connectify-vercel.vercel.app', 'https://connectify.vercel.app', 'https://connectify-git-main-beeramnarayana.vercel.app'] // Updated with actual domain
-    : ['http://localhost:5173'],
+    ? [,'https://connectify-8.onrender.com','http://localhost:5173'] // Updated with actual domain
+    : ['http://localhost:5173','https://connectify-8.onrender.com'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
