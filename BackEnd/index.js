@@ -30,13 +30,13 @@ app.use(cookieParser());
 app.use(cors({
 
   origin: process.env.NODE_ENV === 'production' 
-<<<<<<< HEAD
-    ? [,'https://connectify-8.onrender.com','http://localhost:5173'] // Updated with actual domain
-    : ['http://localhost:5173','https://connectify-8.onrender.com'],
-=======
-    ? ['https://social-media-frontend-theta-sandy.vercel.app' ,'https://connectify-mu-eight.vercel.app', 'https://connectify-vercel.vercel.app', 'https://connectify.vercel.app', 'https://connectify-git-main-beeramnarayana.vercel.app'] // Updated with actual domain
-    : ['http://localhost:5173'],
->>>>>>> 082ec089b2492812a373b770ac5fa672003ee1cf
+
+    ? [,'https://connectify-8.onrender.com','http://localhost:5173','https://connectify-477r.vercel.app'] // Updated with actual domain
+    : ['http://localhost:5173','https://connectify-8.onrender.com','https://connectify-477r.vercel.app'],
+
+//     ? ['https://social-media-frontend-theta-sandy.vercel.app' ,'https://connectify-mu-eight.vercel.app', 'https://connectify-vercel.vercel.app', 'https://connectify.vercel.app', 'https://connectify-git-main-beeramnarayana.vercel.app'] // Updated with actual domain
+//     : ['http://localhost:5173'],
+// >>>>>>> 082ec089b2492812a373b770ac5fa672003ee1cf
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
