@@ -5,7 +5,7 @@ import PostCard from "../components/PostCard";
 import { FaArrowDownLong, FaArrowUp } from "react-icons/fa6";
 import api from "../config/axios.js";
 import { Loading } from "../components/Loading";
-import { UserData } from "../context/UserContext";
+import { UserData } from "../context/UserContext.jsx";
 import Modal from "../components/Modal";
 
 const UserAccount = ({ user: loggedInUser }) => {
